@@ -32,7 +32,7 @@ try {
 
     })
     await setDoc(doc(db,"chats",user.uid),{
-        chatData:[]
+        chatsData:[]
     })
 } catch (error) {
     console.error(error)
