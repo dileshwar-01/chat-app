@@ -7,6 +7,10 @@ const AppContextProvider = (props) => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
   const [chatData, setChatData] = useState([]);
+  const [messagesId,setMessagesId] = useState(null)
+  const [messages,setMessages] = useState([])
+  const [chatUser, setChatUser] = useState(null)
+
 
   const loadUserData = async (uid) => {
     try {
@@ -55,11 +59,12 @@ const AppContextProvider = (props) => {
   },[userData])
 
   const value = {
-    userData,
-    setUserData,
-    chatData,
-    setChatData,
+    userData,setUserData,
+    chatData,setChatData,
     loadUserData,
+    messages,setMessages,
+    messagesId,setMessagesId,
+    chatUser,setChatUser
   };
 
   return (

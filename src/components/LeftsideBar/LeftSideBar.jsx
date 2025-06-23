@@ -2,12 +2,12 @@ import React, { useContext, useState } from "react";
 import "./LeftSideBar.css";
 import assets from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
-import { arrayUnion, collection, doc, getDocs, query, serverTimestamp, setDoc, updateDoc, where } from "firebase/firestore";
+import { arrayUnion, collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc, where } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { AppContext } from "../../context/AppContext";
 import { toast } from "react-toastify";
 const LeftSideBar = () => {
-  const { userData , chatData} = useContext(AppContext);
+  const { userData , chatData, chatUser, setChatUser,setMessagesId,messagesId} = useContext(AppContext);
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
@@ -77,6 +77,23 @@ const LeftSideBar = () => {
       }
   }
 
+  const setChat = async (item)=>{
+    try {
+      setMessagesId(item.messageId)
+      setChatUser(item)
+      const userChatsRef = doc(db,'chats',userData.id);
+      const userChatsSnapshot = await getDoc(userChatsRef);
+      const userChatsData = userChatsSnapshot.data();
+      const chatIndex = userChatsData.chatsData.findIndex((c)=>c.messageId===item.messageId);
+      userChatsData.chatsData[chatIndex].messageSeen = true;
+      await updateDoc(userChatsRef,{
+        chatsData : userChatsData.chatsData
+      })
+    } catch (error) {
+      toast.error(error.message)
+    }
+   
+  }
 
   return (
     <div className="ls">
@@ -110,7 +127,7 @@ const LeftSideBar = () => {
         :
        chatData.map((item, index) => (
 
-            <div key={index} className="friends">
+            <div onClick={()=>setChat(item)} key={index} className={`friends ${item.messageSeen || item.messageId === messagesId ? "" : "border"}`}>
               <img src={item.userData.avatar} alt="" />
               <div>
                 <p>{item.userData.name}</p>
