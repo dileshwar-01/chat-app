@@ -121,3 +121,12 @@
 .friends.border div span{
     color:#07fff3;
 }
+
+@media (max-width:900px){
+  .ls{
+    width: 100%;
+  }
+}
+.hidden{
+  display: none !important;
+}
