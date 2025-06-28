@@ -1,12 +1,33 @@
-# React + Vite
+# 💬 ChatApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern real-time chat application built with **React**, **Firebase**, and **Vite**.  
+It supports user authentication, real-time messaging, image sharing, profile updates, and a beautiful responsive UI with light/dark mode toggle.
 
-Currently, two official plugins are available:
+🌐 **Live Demo:**  
+👉 [ChatApp on Vercel](https://chat-app-git-main-dileshwar-singhs-projects.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ✅ **User Authentication** (Firebase Auth)
+- 💬 **Real-time Messaging** using Firestore
+- 🖼️ **Image Upload & Display**
+- 👤 **Profile Update** with image and bio
+- 🌓 **Dark Mode Toggle**
+- 📱 **Responsive UI** (Mobile & Desktop)
+- 🔍 **User Search**
+- ✅ **Last Seen** indicator
+- 🗂️ **Media Preview Panel**
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React + Vite
+- **Backend:** Firebase Firestore
+- **Storage:** Firebase Storage
+- **Hosting:** Vercel
+
+---
+
