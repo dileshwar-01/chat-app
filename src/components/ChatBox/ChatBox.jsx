@@ -8,7 +8,8 @@ import upload from '../../lib/upload'
 import { toast } from 'react-toastify'
 const ChatBox = () => {
   const{userData,messagesId,chatUser,messages,setMessages,chatVisible,setChatVisible} = useContext(AppContext)
-  const[input,setInput] =useState("")
+  const[input,setInput] =useState("");
+  const [dark, setDark] = useState(false);
 
   const sendMessage = async () =>{
     try {
@@ -107,10 +108,11 @@ const ChatBox = () => {
   },[messagesId])
 
   return chatUser ? (
-    <div className={`chat-box ${chatVisible? "" : "hidden"}`}>
+    <div className={`chat-box ${chatVisible? "" : "hidden"} ${dark ? "dark" : ""} `}>
        <div className="chat-user">
         <img src={chatUser.userData.avatar} alt="" />
         <p>{chatUser.userData.name} {Date.now() - chatUser.userData.lastSeen <=70000 ? <img src={assets.green_dot} className='dot' alt="" /> :null} </p>
+        <img src={assets.darkMode} onClick={() => setDark(prev => !prev)} id='darkmod' alt="" />
         <img src={assets.help_icon} className='help' alt="" />
         <img onClick={()=>setChatVisible(false)} src={assets.arrow_icon} className='arrow' alt="" />
        </div>
@@ -133,7 +135,7 @@ const ChatBox = () => {
 
 
        <div className="chat-input">
-        <input onChange={(e)=>setInput(e.target.value)} value={input} type="text" placeholder='Send a message' />
+        <input onChange={(e)=>setInput(e.target.value)} className='typemsg' value={input} type="text" placeholder='Send a message' />
         <input onChange={sendImage} type="file" id="image" accept='image/png, image/jpeg' hidden />
         <label htmlFor="image">
           <img src={assets.gallery_icon} alt="" />
