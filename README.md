@@ -26,7 +26,7 @@ It supports user authentication, real-time messaging, image sharing, profile upd
 
 - **Frontend:** React + Vite
 - **Backend:** Firebase Firestore
-- **Storage:** Firebase Storage
+- **Storage:** Cloudinary
 - **Hosting:** Vercel
 
 ---
